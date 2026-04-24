@@ -1534,3 +1534,9 @@ def load_fold_inputs_from_dir(input_dir: pathlib.Path) -> Iterator[Input]:
       continue
 
     yield from load_fold_inputs_from_path(file_path)
+
+  for file_path in sorted(input_dir.glob('**/*.json')):
+    if not file_path.is_file():
+      continue
+
+    yield from load_fold_inputs_from_path(file_path)
